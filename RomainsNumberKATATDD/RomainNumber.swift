@@ -12,7 +12,7 @@ import Foundation
 class RomainNumber{
     
     func convertToArabic(_ romainNumber: String) -> Int {
-        if (romainNumber.count > 0){
+        if (romainNumber.count > 0 && checkRomainNumberValidation(romainNumber)){
         var sum = ArabicEquivalent(romainNumber.first!)
         var lastRomainDigit = romainNumber.first!
         for romain in romainNumber where romain != romainNumber.first{
@@ -49,7 +49,10 @@ class RomainNumber{
         }
     }
     private func checkRomainNumberValidation (_ romainNumber: String)-> Bool{
-        
+        if romainNumber.contains("IIII"){
+            return false
+        }
+        return true
     }
     
 }
