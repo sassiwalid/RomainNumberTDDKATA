@@ -11,15 +11,6 @@ import XCTest
 
 class RomainsNumberKATATDDTests: XCTestCase {
     let sut = RomainNumber()
-
-    override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
     func testOneRomain_Digit_Should_Return_One_In_Arabic(){
         let result = sut.convertToArabic("I")
         
@@ -85,7 +76,15 @@ class RomainsNumberKATATDDTests: XCTestCase {
         XCTAssertNotNil(result)
         XCTAssertEqual(result, 12, "Result should be 12")
     }
-    
-    
-
+    func testDIX_Romain_Should_return_509_Arabic_Number(){
+        let result = sut.convertToArabic("DIX")
+        //then
+        XCTAssertNotNil(result)
+        XCTAssertEqual(result, 509, "Result should be 509")
+    }
+    func testInvalid_Romain_Number_Should_return_Zero_Arabic_Number(){
+        let result = sut.convertToArabic("XIIII")
+        //then
+        XCTAssertEqual(result, 0, "Invalid Expression should return zero")
+    }
 }

@@ -12,13 +12,23 @@ import Foundation
 class RomainNumber{
     
     func convertToArabic(_ romainNumber: String) -> Int {
-        var sum = 0
-        for romain in romainNumber {
-            sum += ArabicEquivalent(romain)
+        if (romainNumber.count > 0){
+        var sum = ArabicEquivalent(romainNumber.first!)
+        var lastRomainDigit = romainNumber.first!
+        for romain in romainNumber where romain != romainNumber.first{
+            if ArabicEquivalent(romain) > ArabicEquivalent(lastRomainDigit){
+                sum = sum - ArabicEquivalent(lastRomainDigit) + abs(ArabicEquivalent(romain)-ArabicEquivalent(lastRomainDigit))
+                
+            }else{
+                sum += ArabicEquivalent(romain)
+            }
+        lastRomainDigit = romain
         }
         return sum
+        }
+        return 0
     }
-    func ArabicEquivalent (_ romainDigitNumber : Character )->Int{
+    private func ArabicEquivalent (_ romainDigitNumber : Character )->Int{
         switch romainDigitNumber {
         case "I":
             return 1
@@ -37,6 +47,9 @@ class RomainNumber{
         default:
             return 0
         }
+    }
+    private func checkRomainNumberValidation (_ romainNumber: String)-> Bool{
+        
     }
     
 }
