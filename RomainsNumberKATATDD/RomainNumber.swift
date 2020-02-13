@@ -12,7 +12,14 @@ import Foundation
 class RomainNumber{
     
     func convertToArabic(_ romainNumber: String) -> Int {
-        switch romainNumber {
+        var sum = 0
+        for romain in romainNumber {
+            sum += ArabicEquivalent(romain)
+        }
+        return sum
+    }
+    func ArabicEquivalent (_ romainDigitNumber : Character )->Int{
+        switch romainDigitNumber {
         case "I":
             return 1
         case "V":
